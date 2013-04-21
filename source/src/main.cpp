@@ -6,47 +6,77 @@
  */
 
 #include <stdio.h>
-#include <string>
-#include <Zeus/DataStructure/FenwickTree.h>
-#include <Zeus/DataStructure/BloomFilter.h>
+#include <Zeus/DataStructure/BinaryHeap.h>
 
 using namespace Zeus::DataStructure;
 
-struct HashBank
-{
-    static const int hash_param[5];
-    static int hash(const std::string & s, int hashNumber)
-    {
-        int result = 376211;
-        for(int i=0; i<(int)s.length(); ++i)
-            result = result * hash_param[hashNumber] ^ s[i];
-        return result;
-    }
-};
-
-const int HashBank::hash_param[5] = {13215763, 1231717, 2341713, 56123781, 12398919};
-
 int main()
 {
-    FenwickTree<float> a(10);
+    BinaryHeap<int> a;
+    a.push(6);
+    a.push(6);
+    a.push(9);
+    a.push(5);
+    a.push(10);
+    a.push(3);
+    a.push(8);
+    a.push(4);
+    a.push(1);
+    a.push(7);
+    a.push(2);
+    a.push(9);
+    a.push(5);
+    a.push(10);
+    a.push(6);
+    a.push(9);
+    a.push(5);
+    a.push(10);
+    a.push(3);
+    a.push(8);
+    a.push(4);
+    a.push(1);
+    a.push(7);
+    a.push(2);
+    a.push(3);
+    a.push(8);
+    a.push(6);
+    a.push(9);
+    a.push(5);
+    a.push(10);
+    a.push(3);
+    a.push(8);
+    a.push(4);
+    a.push(1);
+    a.push(7);
+    a.push(2);
+    a.push(4);
+    a.push(1);
+    a.push(7);
+    a.push(2);
 
-    a.increase(3, 5);
-    a.increase(1, 2);
-    a.increase(4, 3);
+    for(int i = 0; i < 4; ++i)
+    {
+        printf("top = %d\n", a.top());
+        a.pop();
+        printf("top = %d\n", a.top());
+        a.pop();
+        printf("top = %d\n", a.top());
+        a.pop();
+        printf("top = %d\n", a.top());
+        a.pop();
+        printf("top = %d\n", a.top());
+        a.pop();
+        printf("top = %d\n", a.top());
+        a.pop();
+        printf("top = %d\n", a.top());
+        a.pop();
+        printf("top = %d\n", a.top());
+        a.pop();
+        printf("top = %d\n", a.top());
+        a.pop();
+        printf("top = %d\n", a.top());
+        a.pop();
+    }
 
-    printf("sum[0..4] = %f\n", a.sum(4));
-
-    BloomFilter<std::string, HashBank> bloomFilter(800, 5);
-
-//    bloomFilter.insert("mother");
-    bloomFilter.insert("queen");
-//    bloomFilter.insert("wilcox");
-    bloomFilter.insert("mewerick");
-
-    printf("mother: %s\n", bloomFilter.find("mother")?"yes":"no");
-    printf("queen: %s\n", bloomFilter.find("queen")?"yes":"no");
-    printf("wilcox: %s\n", bloomFilter.find("wilcox")?"yes":"no");
-    printf("mewerick: %s\n", bloomFilter.find("mewerick")?"yes":"no");
-
-	return 0;
+    return 0;
 }

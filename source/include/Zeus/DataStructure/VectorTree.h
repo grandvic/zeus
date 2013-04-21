@@ -21,15 +21,15 @@ namespace Zeus
             std::vector<T> data;
         public:
             VectorTree(int n=0);
-            virtual ~VectorTree();
+            ~VectorTree();
             T & operator[](int index);
             const T & operator[](int index) const;
             int parent(int index) const;
             int leftChild(int index) const;
             int rightChild(int index) const;
             int size() const;
-            void push(const T & value);
-            void pop();
+            void push_back(const T & value);
+            void pop_back();
             void resize(int newSize);
             void reserve(int newSize);
         };
@@ -48,7 +48,7 @@ namespace Zeus
         template<class T>
         inline T & VectorTree<T>::operator [](int index)
         {
-            assert((index>=0)&&(index<data.size()));
+            assert((index>=0)&&(index<static_cast<int>(data.size())) );
             return data[index];
         }
 
@@ -68,14 +68,14 @@ namespace Zeus
         inline int VectorTree<T>::leftChild(int index) const
         {
             int child = (index<<1)+1;
-            return (child<data.size())?child:-1;
+            return (child<static_cast<int>(data.size()))?child:-1;
         }
 
         template<class T>
         inline int VectorTree<T>::rightChild(int index) const
         {
             int child = (index<<1)+2;
-            return (child<data.size())?child:-1;
+            return (child<static_cast<int>(data.size()))?child:-1;
         }
 
         template<class T>
@@ -85,15 +85,15 @@ namespace Zeus
         }
 
         template<class T>
-        inline void VectorTree<T>::push(const T & value)
+        inline void VectorTree<T>::push_back(const T & value)
         {
             data.push_back(value);
         }
 
         template<class T>
-        inline void VectorTree<T>::pop()
+        inline void VectorTree<T>::pop_back()
         {
-            data.pop();
+            data.pop_back();
         }
 
         template<class T>
