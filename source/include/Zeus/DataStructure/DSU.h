@@ -14,7 +14,7 @@ namespace Zeus
 {
     namespace DataStructure
     {
-        template<class T=unsigned int>
+        template<class T>
         class DSU
         {
             std::vector<T> data;
@@ -27,11 +27,11 @@ namespace Zeus
             T componentsCount()const;
             T addSet();
             T find(T index);
-            T unite(T a, T b);
+            void unite(T a, T b);
         };
 
         template<class T>
-        DSU<T>::DSU(T N = 0)
+        DSU<T>::DSU(T N)
                 : rank(N, 1), components(N)
         {
             data.reserve(N);
@@ -76,7 +76,7 @@ namespace Zeus
         }
 
         template<class T>
-        T DSU<T>::unite(T a, T b)
+        void DSU<T>::unite(T a, T b)
         {
             T first = find(a);
             T second = find(b);

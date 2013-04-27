@@ -5,78 +5,23 @@
  *      Author: grand
  */
 
-#include <stdio.h>
-#include <Zeus/DataStructure/BinaryHeap.h>
+#include <iostream>
+#include <Zeus/DataStructure/DSU.h>
 
 using namespace Zeus::DataStructure;
+using namespace std;
 
 int main()
 {
-    BinaryHeap<int> a;
-    a.push(6);
-    a.push(6);
-    a.push(9);
-    a.push(5);
-    a.push(10);
-    a.push(3);
-    a.push(8);
-    a.push(4);
-    a.push(1);
-    a.push(7);
-    a.push(2);
-    a.push(9);
-    a.push(5);
-    a.push(10);
-    a.push(6);
-    a.push(9);
-    a.push(5);
-    a.push(10);
-    a.push(3);
-    a.push(8);
-    a.push(4);
-    a.push(1);
-    a.push(7);
-    a.push(2);
-    a.push(3);
-    a.push(8);
-    a.push(6);
-    a.push(9);
-    a.push(5);
-    a.push(10);
-    a.push(3);
-    a.push(8);
-    a.push(4);
-    a.push(1);
-    a.push(7);
-    a.push(2);
-    a.push(4);
-    a.push(1);
-    a.push(7);
-    a.push(2);
+    DSU<unsigned int> a(5);
+    cout<<a.componentsCount()<<endl;
 
-    for(int i = 0; i < 4; ++i)
-    {
-        printf("top = %d\n", a.top());
-        a.pop();
-        printf("top = %d\n", a.top());
-        a.pop();
-        printf("top = %d\n", a.top());
-        a.pop();
-        printf("top = %d\n", a.top());
-        a.pop();
-        printf("top = %d\n", a.top());
-        a.pop();
-        printf("top = %d\n", a.top());
-        a.pop();
-        printf("top = %d\n", a.top());
-        a.pop();
-        printf("top = %d\n", a.top());
-        a.pop();
-        printf("top = %d\n", a.top());
-        a.pop();
-        printf("top = %d\n", a.top());
-        a.pop();
-    }
+    a.unite(1,2);
+    a.unite(0,2);
+    a.unite(1,3);
+    a.unite(0,3);
+
+    cout<<a.componentsCount()<<endl;
 
     return 0;
 }
